@@ -1,10 +1,10 @@
 #include <Bluepad32.h>
 #include <HardwareSerial.h>
-#include <BluetoothSerial.h>
+// #include <BluetoothSerial.h>
 
 
 
-BluetoothSerial serial_bt;
+// BluetoothSerial serial_bt;
 HardwareSerial main_serial_port(2);
 GamepadPtr myGamepads[BP32_MAX_GAMEPADS];
 
@@ -155,11 +155,11 @@ void controller_setup() {
 }
 
 void setup() {
-  // controller_setup();
+  controller_setup();
   Serial.begin(115200);
 
-  serial_bt.begin("RoadRunner");
-  Serial.println("The device started, now you can pair it with bluetooth!");
+  // serial_bt.begin("RoadRunner");
+  // Serial.println("The device started, now you can pair it with bluetooth!");
 
   main_serial_port.begin(115200, SERIAL_8N1, 16, 17);
   //bt_serial_port.begin("RoadRunner");
@@ -168,10 +168,10 @@ void setup() {
 char rx_buffer[26];
 void loop() {
   /*TODO: Implement mode switch*/
-  // tele_op_mode();
-  if(serial_bt.available()){
-    char incomingByte = serial_bt.read();  // Read the incoming byte
-    Serial.print("Received: ");
-    Serial.println(incomingByte);
-  }
+  tele_op_mode();
+  // if(serial_bt.available()){
+  //   char incomingByte = serial_bt.read();  // Read the incoming byte
+  //   Serial.print("Received: ");
+  //   Serial.println(incomingByte);
+  // }
 }
